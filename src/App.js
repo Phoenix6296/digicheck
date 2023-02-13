@@ -1,7 +1,10 @@
 import styles from './App.module.css'
+import User from './Components/User/User'
 const App = () => {
   return (
-    <div className={`${styles.app}`}>App</div>
+    <div className={`${styles.app}`}>
+      <User />
+    </div>
   )
 }
 
