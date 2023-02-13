@@ -1,11 +1,11 @@
 import Navbar from "./Navbar/Navbar"
-import Upload from "./Upload/Upload"
+import Home from "./Home/Home"
 
 const User = () => {
     return (
         <>
             <Navbar />
-            <Upload />
+            <Home />
         </>
     )
 }
