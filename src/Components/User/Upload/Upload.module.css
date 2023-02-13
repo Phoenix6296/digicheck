@@ -4,12 +4,6 @@
     justify-content: center;
 }
 
-.upload__wrapper {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
 .upload {
     display: flex;
     align-items: center;
@@ -43,4 +37,15 @@ input[type="file"] {
 
 .upload>p {
     color: #ccc;
+}
+
+@media screen and (max-width: 768px) {
+    .upload {
+        gap: 0.5rem;
+    }
+
+    .button {
+        padding: 10px;
+        gap: 0.2rem;
+    }
 }

@@ -15,17 +15,15 @@ const Upload = () => {
         console.log(file);
     }
     return (
-        <div className={`${styles.upload__wrapper}`}>
-            <div className={`${styles.upload}`}>
-                <div className={`${styles.button} ${styles.center}`}>
-                    <FileUploadOutlinedIcon />
-                    <label for="upload">Upload File</label>
-                </div>
-                <input id="upload" type="file"
-                    onChange={onUploadHandler}
-                />
-                <p>{fileName}</p>
+        <div className={`${styles.upload}`}>
+            <div className={`${styles.button} ${styles.center}`}>
+                <FileUploadOutlinedIcon />
+                <label for="upload">Upload File</label>
             </div>
+            <input id="upload" type="file"
+                onChange={onUploadHandler}
+            />
+            <p>{fileName}</p>
         </div>
     );
 };

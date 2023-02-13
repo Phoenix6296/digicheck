@@ -1,5 +1,27 @@
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .home {
-    background-color: red;
-    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 10rem;
     padding: 0.5rem 10%;
+}
+
+.home>span {
+    color: #ccc;
+}
+
+@media screen and (max-width: 768px) {
+    .home {
+        margin-top: 0;
+        padding: 0.5rem 10%;
+        height: 75vh;
+        align-items: center;
+        justify-content: center;
+    }
 }
