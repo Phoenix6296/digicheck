@@ -1,7 +1,10 @@
 import styles from './App.module.css'
+import Navbar from './Components/User/Navbar/Navbar'
 const App = () => {
   return (
-    <div className={`${styles.app}`}>App</div>
+    <div className={`${styles.app}`}>
+      <Navbar />
+    </div>
   )
 }
 
