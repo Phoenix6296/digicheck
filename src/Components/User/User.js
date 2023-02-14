@@ -10,7 +10,7 @@ const User = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/cer" element={<ShowCertificate />} />
+                <Route path="/certificate" element={<ShowCertificate />} />
             </Routes>
         </div>
     );

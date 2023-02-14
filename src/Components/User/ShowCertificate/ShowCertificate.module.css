@@ -1,0 +1,31 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.showCertificate {
+    margin: 0.5rem 5%;
+    /* background-color: #00ffff; */
+    height: 88vh;
+    display: flex;
+    /* border: 1px solid black; */
+    gap: 1rem;
+}
+
+.showPdf {
+    height: 100%;
+    flex: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+    .showCertificate {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .showPdf {
+        width: 100%;
+        flex: 1;
+    }
+}

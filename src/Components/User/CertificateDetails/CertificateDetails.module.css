@@ -1,0 +1,30 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.certificateDetails {
+    flex-direction: column;
+    flex: 0.2;
+    /* border: 1px solid black; */
+    padding: 1rem;
+}
+
+.person {
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    width: 90%;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 768px) {
+    .certificateDetails {
+        width: 90%;
+        flex: 1;
+    }
+}
