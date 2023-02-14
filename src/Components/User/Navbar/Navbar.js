@@ -1,24 +1,30 @@
+import { useState } from 'react';
 import styles from './Navbar.module.css'
 import Logo from '../../../assets/images/logo.png'
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
+import SignupForm from '../SignupForm/SignupForm';
 
-export default function Navbar() {
+const Navbar = () => {
+    const [toggleModal, setToggleModal] = useState(false);
+
+    const handleSignupModalClose = () => {
+        setToggleModal(false);
+    };
+
+    const onSignUpHandler = () => {
+        console.log('clicked');
+        setToggleModal(true);
+    };
+
     return (
         <>
             {
                 window.innerWidth < 768 ?
                     <Alert severity="info"
                         sx={{
-                            //Change alert icon color
-                            '& .MuiAlert-icon': {
-                                color: '#6AC258',
-                            },
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}
-                    >
+                            '& .MuiAlert-icon': { color: '#6AC258', }, display: 'flex', justifyContent: 'center', alignItems: 'center',
+                        }}>
                         <span className={`${styles.alert_span}`}>SIGNUP</span> for admin access.
                     </Alert> : null
             }
@@ -30,19 +36,17 @@ export default function Navbar() {
                 <div className={`${styles.signup} ${styles.center}`}>
                     <Button variant="outlined"
                         sx={{
-                            borderColor: '#6AC258',
-                            backgroundColor: '#6AC258',
-                            color: '#fff',
-                            '&:hover': {
-                                borderColor: '#6AC258',
-                                color: '#6AC258',
-                                backgroundColor: '#fff',
-                            },
+                            borderColor: '#6AC258', backgroundColor: '#6AC258', color: '#fff',
+                            '&:hover': { borderColor: '#6AC258', color: '#6AC258', backgroundColor: '#fff', }
                         }}
+                        onClick={onSignUpHandler}
                     >Signup</Button>
+                    <SignupForm showModal={toggleModal} onClose={handleSignupModalClose}/>
                     <span>as ADMIN</span>
                 </div>
             </nav>
         </>
     );
 }
+
+export default Navbar;
