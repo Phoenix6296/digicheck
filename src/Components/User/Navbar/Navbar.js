@@ -8,7 +8,7 @@ import SignupForm from '../SignupForm/SignupForm';
 const Navbar = () => {
     const [toggleModal, setToggleModal] = useState(false);
 
-    const handleSignupModalClose = () => {
+    const handleSignupFormClose = () => {
         setToggleModal(false);
     };
 
@@ -25,7 +25,7 @@ const Navbar = () => {
                         sx={{
                             '& .MuiAlert-icon': { color: '#6AC258', }, display: 'flex', justifyContent: 'center', alignItems: 'center',
                         }}>
-                        <span className={`${styles.alert_span}`}>SIGNUP</span> for admin access.
+                        <span className={`${styles.alert_span}`} onClick={onSignUpHandler}>SIGNUP</span> for admin access.
                     </Alert> : null
             }
             <nav className={window.innerWidth < 768 ? `${styles.center}` : null}>
@@ -41,7 +41,7 @@ const Navbar = () => {
                         }}
                         onClick={onSignUpHandler}
                     >Signup</Button>
-                    <SignupForm showModal={toggleModal} onClose={handleSignupModalClose}/>
+                    <SignupForm showModal={toggleModal} onClose={handleSignupFormClose} />
                     <span>as ADMIN</span>
                 </div>
             </nav>
