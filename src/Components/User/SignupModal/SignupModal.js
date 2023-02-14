@@ -1,10 +1,11 @@
-import styles from './SignupForm.module.css';
+import styles from './SignupModal.module.css';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Form from '../Form/Form';
 import Cartoon from '../../../assets/images/cartoon.png';
 
 const SignupForm = (props) => {
+    const { showModal, onClose } = props;
     const style = {
         position: 'absolute',
         top: '50%',
@@ -18,11 +19,9 @@ const SignupForm = (props) => {
         borderRadius: '5px',
         display: 'flex',
         alignItems: 'center',
-        // justifyContent: 'center',
         flexDirection: 'column',
     };
 
-    const { showModal, onClose } = props;
 
     const handleCloseModal = () => {
         onClose();

@@ -36,9 +36,7 @@ const Form = () => {
                 fullWidth
                 margin="normal"
             />
-            <Button type="submit" variant="contained" color="primary">
-                Submit
-            </Button>
+            <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>Submit</Button>
         </Box>
     );
 };

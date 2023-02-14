@@ -18,7 +18,7 @@ const Upload = () => {
         <div className={`${styles.upload}`}>
             <div className={`${styles.button} ${styles.center}`}>
                 <FileUploadOutlinedIcon />
-                <label for="upload">Upload File</label>
+                <label htmlFor="upload">Upload File</label>
             </div>
             <input id="upload" type="file"
                 onChange={onUploadHandler}

@@ -3,7 +3,7 @@ import styles from './Navbar.module.css'
 import Logo from '../../../assets/images/logo.png'
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
-import SignupForm from '../SignupForm/SignupForm';
+import SignupModal from '../SignupModal/SignupModal';
 
 const Navbar = () => {
     const [toggleModal, setToggleModal] = useState(false);
@@ -41,7 +41,7 @@ const Navbar = () => {
                         }}
                         onClick={onSignUpHandler}
                     >Signup</Button>
-                    <SignupForm showModal={toggleModal} onClose={handleSignupFormClose} />
+                    <SignupModal showModal={toggleModal} onClose={handleSignupFormClose} />
                     <span>as ADMIN</span>
                 </div>
             </nav>
