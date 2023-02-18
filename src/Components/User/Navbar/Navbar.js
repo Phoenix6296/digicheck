@@ -1,8 +1,9 @@
 // import { useState } from 'react';
-import styles from './Navbar.module.css'
+import styles from './Navbar.module.css';
 import Logo from '../../../assets/images/logo.png'
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const onSignUpHandler = () => {
@@ -21,18 +22,22 @@ const Navbar = () => {
                     </Alert> : null
             }
             <nav className={window.innerWidth < 768 ? `${styles.center}` : null}>
-                <div className={`${styles.brand} ${styles.center}`}>
-                    <img src={Logo} alt="Brand Logo" />
-                    <span>DIGICHECK</span>
-                </div>
+                <Link to="/" className={styles.link}>
+                    <div className={`${styles.brand} ${styles.center}`}>
+                        <img src={Logo} alt="Brand Logo" />
+                        <span>DIGICHECK</span>
+                    </div>
+                </Link>
                 <div className={`${styles.signup} ${styles.center}`}>
-                    <Button variant="outlined"
-                        sx={{
-                            borderColor: '#6AC258', backgroundColor: '#6AC258', color: '#fff',
-                            '&:hover': { borderColor: '#6AC258', color: '#6AC258', backgroundColor: '#fff', }
-                        }}
-                        onClick={onSignUpHandler}
-                    >Signup</Button>
+                    <Link to="/signup" className={styles.link}>
+                        <Button variant="outlined"
+                            sx={{
+                                borderColor: '#6AC258', backgroundColor: '#6AC258', color: '#fff',
+                                '&:hover': { borderColor: '#6AC258', color: '#6AC258', backgroundColor: '#fff', }
+                            }}
+                            onClick={onSignUpHandler}
+                        >Signup</Button>
+                    </Link>
                     <span>as ADMIN</span>
                 </div>
             </nav>

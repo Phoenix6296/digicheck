@@ -9,7 +9,6 @@ const App = () => {
     <div className={`${styles.app}`}>
       <Routes>
         <Route path="/*" element={<User />} exact />
-        <Route path="/signup" element={<User />} onEnter={() => navigate('/')} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </div>

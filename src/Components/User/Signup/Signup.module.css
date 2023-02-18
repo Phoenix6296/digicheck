@@ -1,0 +1,58 @@
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.container {
+    margin-top: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    gap: 2rem;
+    width: fit-content;
+    flex-direction: column;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.form {
+    width: 30rem;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.form>* {
+    width: 100%;
+}
+
+.link {
+    text-decoration: none;
+    color: #6AC258;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.error_message {
+    text-align: center;
+    color: red;
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+    .container__wrapper {
+        overflow: hidden;
+    }
+
+    .container {
+        margin: 2%;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .form {
+        width: 100%;
+    }
+}
