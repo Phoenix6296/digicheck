@@ -1,13 +1,15 @@
 import styles from '../Signup/Signup.module.css'
 import { useState, useEffect } from 'react'
 import { Button, FormControl, InputLabel, OutlinedInput } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const ForgotPassword = () => {
+    const navigate = useNavigate();
     const [error, setError] = useState('');
     const [email, setEmail] = useState('')
     const [emailValidation, setEmailValidation] = useState(false)
-    //If user is logged in, redirect to home page
+
     useEffect(() => {
         setTimeout(() => {
             setError('');
@@ -21,8 +23,16 @@ const ForgotPassword = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log('Submitted');
+        sendPasswordResetEmail(email)
+            .then(() => {
+                console.log('Password reset email sent');
+                navigate('/login');
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
     }
+
     return (
         <div className={`${styles.container__wrapper} ${styles.center}`}>
             <div className={`${styles.container} ${styles.center}`}>

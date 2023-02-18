@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material'
 import styles from '../Signup/Signup.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { auth } from '../../../Firebase'
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = (props) => {
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [user, setUser] = useState({ email: '', password: '' })
     const [userValidation, setUserValidation] = useState({ email: false, password: false })
@@ -15,10 +18,20 @@ const Login = (props) => {
             setError('');
         }, 3000)
     }, [error])
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            user ? navigate('/admin') : console.log('No user is logged in');
+        })
+    }, [navigate])
 
     //Logic for Submit Form
     const submitHandler = () => {
-        console.log('Submitted');
+        signInWithEmailAndPassword(auth, user.email, user.password).then((userCredential) => {
+            navigate('/admin');
+            console.log(userCredential);
+        }).catch((error) => {
+            console.err(error.message);
+        })
     }
 
     //Logic for Email and Password

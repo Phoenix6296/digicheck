@@ -1,10 +1,12 @@
+// import { useState } from 'react'
 import styles from './App.module.css'
 import User from './Components/User/User'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Admin from './Components/Admin/Admin'
+// import { auth } from './firebase'
 
 const App = () => {
-  const navigate = useNavigate()
+
   return (
     <div className={`${styles.app}`}>
       <Routes>

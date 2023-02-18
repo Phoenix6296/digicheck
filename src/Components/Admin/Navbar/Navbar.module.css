@@ -1,0 +1,60 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 10%;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.brand {
+    gap: 1rem;
+}
+
+.brand>img {
+    width: 50px;
+    height: 50px;
+}
+
+.brand>span {
+    font-size: 1.5rem;
+}
+
+.signup {
+    gap: 0.5rem;
+}
+
+.link {
+    text-decoration: none;
+    color: #000;
+}
+
+@media screen and (max-width: 768px) {
+    .brand {
+        gap: 0.5rem;
+    }
+
+    .brand>img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .brand>span {
+        font-size: 1.1rem;
+    }
+
+    .signup {
+        display: none;
+    }
+
+    .alert_span {
+        cursor: pointer;
+        font-weight: 900;
+        color: #6AC258;
+        text-decoration: underline;
+    }
+}

@@ -4,10 +4,13 @@ import Tooltip from '@mui/material/Tooltip';
 import InfoIcon from '@mui/icons-material/Info';
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { auth } from '../../../Firebase'
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 
 const Signup = () => {
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [user, setUser] = useState({ name: '', email: '', password: '', confirmPassword: '' })
     const [userValidation, setUserValidation] = useState({ name: false, email: false, password: false, confirmPassword: false })
@@ -18,6 +21,11 @@ const Signup = () => {
             setError('');
         }, 3000)
     }, [error])
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            user ? navigate('/admin') : console.log('No user is logged in');
+        })
+    }, [navigate])
 
     //Visibility Handler of Password
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -45,6 +53,12 @@ const Signup = () => {
 
     //Logic and Validation for Authentication and Signup
     const submitHandler = () => {
+        createUserWithEmailAndPassword(auth, user.email, user.password).then((userCredential) => {
+            navigate('/admin');
+            console.log(userCredential);
+        }).catch((error) => {
+            setError(error.message);
+        });
         console.log('Submitted');
     }
     return (

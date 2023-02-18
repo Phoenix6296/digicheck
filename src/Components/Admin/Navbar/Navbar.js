@@ -1,14 +1,34 @@
+import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 import Logo from '../../../assets/images/logo.png'
-import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../../../Firebase';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
-    const location = useLocation();
+    const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            setUser(user);
+        });
+
+        return unsubscribe;
+    }, []);
 
     const onSignUpHandler = () => {
         console.log('clicked');
+    };
+
+    const logoutHandler = () => {
+        signOut(auth).then(() => {
+            navigate('/');
+            console.log('Logged out');
+        }).catch((error) => {
+            console.log(error.message);
+        });
     };
 
     return (
@@ -29,21 +49,12 @@ const Navbar = () => {
                         <span>DIGICHECK</span>
                     </div>
                 </Link>
-
-                {location.pathname === "/" && (
-                    <div className={`${styles.signup} ${styles.center}`}>
-                        <Link to="/signup" className={styles.link}>
-                            <Button variant="outlined"
-                                sx={{
-                                    borderColor: '#6AC258', backgroundColor: '#6AC258', color: '#fff',
-                                    '&:hover': { borderColor: '#6AC258', color: '#6AC258', backgroundColor: '#fff', }
-                                }}
-                                onClick={onSignUpHandler}
-                            >Signup</Button>
-                        </Link>
-                        <span>as ADMIN</span>
-                    </div>
-                )}
+                {
+                    user ?
+                        <button onClick={logoutHandler}>Logout</button>
+                        :
+                        <Link to="/login"><button>Login</button></Link>
+                }
             </nav>
         </>
     );
