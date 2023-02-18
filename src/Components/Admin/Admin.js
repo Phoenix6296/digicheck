@@ -1,6 +1,11 @@
+import Dashboard from "./Dashboard/Dashboard"
+
 const Admin = () => {
   return (
-    <div>Admin</div>
+    <div>
+      <h1>Admin</h1>
+      <Dashboard />
+    </div>
   )
 }
 

@@ -9,8 +9,8 @@ const User = () => {
         <div>
             <Navbar />
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/certificate" element={<ShowCertificate />} />
+                <Route path="/" element={<Home />} exact />
+                <Route path="/certificate" element={<ShowCertificate />} exact />
             </Routes>
         </div>
     );
