@@ -6,6 +6,7 @@ import ShowCertificate from "./ShowCertificate/ShowCertificate";
 import Signup from "./Signup/Signup";
 import Login from "./Login/Login";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
+import EmailVerify from "./EmailVerify/EmailVerify";
 
 const User = () => {
     return (
@@ -17,6 +18,7 @@ const User = () => {
                 <Route path="/signup" element={<Signup />} exact />
                 <Route path="/login" element={<Login />} exact />
                 <Route path="/login/forgot_password" element={<ForgotPassword />} exact />
+                <Route path="email_verify_sent" element={<EmailVerify />} exact />
             </Routes>
         </div>
     );

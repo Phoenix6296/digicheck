@@ -1,0 +1,16 @@
+.email {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.link {
+    color: #6AC258;
+    font-weight: 600;
+}

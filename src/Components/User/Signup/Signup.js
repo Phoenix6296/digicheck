@@ -6,11 +6,12 @@ import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
 import { auth } from '../../../Firebase'
-import { createUserWithEmailAndPassword } from "firebase/auth";
-
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { SyncLoader } from 'react-spinners';
 
 const Signup = () => {
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [user, setUser] = useState({ name: '', email: '', password: '', confirmPassword: '' })
     const [userValidation, setUserValidation] = useState({ name: false, email: false, password: false, confirmPassword: false })
@@ -23,7 +24,7 @@ const Signup = () => {
     }, [error])
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
-            user ? navigate('/admin') : console.log('No user is logged in', "Signup.js");
+            if (user && user.emailVerified) navigate('/admin')
         })
     }, [navigate])
 
@@ -51,16 +52,20 @@ const Signup = () => {
         e.target.value === user.password ? setUserValidation({ ...userValidation, confirmPassword: true }) : setUserValidation({ ...userValidation, confirmPassword: false });
     }
 
-    //Logic and Validation for Authentication and Signup
-    const submitHandler = () => {
-        createUserWithEmailAndPassword(auth, user.email, user.password).then((userCredential) => {
-            navigate('/admin');
-            console.log(userCredential);
-        }).catch((error) => {
+    const submitHandler = async () => {
+        setIsLoading(true);
+        try {
+            await createUserWithEmailAndPassword(auth, user.email, user.password);
+            await sendEmailVerification(auth.currentUser);
+            setIsLoading(false);
+            navigate('/email_verify_sent');
+        } catch (error) {
             setError(error.message);
-        });
-        console.log('Submitted');
+        }
     }
+
+    if (isLoading) return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}><SyncLoader loading={isLoading} size={20} /></div>
+
     return (
         <div className={`${styles.container__wrapper} ${styles.center}`}>
             <div className={`${styles.container} ${styles.center}`}>

@@ -20,14 +20,20 @@ const Login = (props) => {
     }, [error])
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
-            user ? navigate('/admin') : console.log('No user is logged in');
+            if (user && user.emailVerified) navigate('/admin')
         })
     }, [navigate])
 
     //Logic for Submit Form
     const submitHandler = () => {
         signInWithEmailAndPassword(auth, user.email, user.password)
-            .then(() => { navigate('/admin') })
+            .then(() => {
+                if (!auth.currentUser.emailVerified) {
+                    setError('Please verify your email address');
+                    return;
+                }
+                navigate('/admin')
+            })
             .catch((error) => { console.err(error.message) })
     }
 

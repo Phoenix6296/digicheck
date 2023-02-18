@@ -10,7 +10,7 @@ const Admin = () => {
   const navigate = useNavigate();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      user ? console.log('User is logged in', "App.js") : navigate('/');
+      user ? console.log(user, "Admin.js") : navigate('/');
       setIsLoading(false);
     })
   }, [navigate, isLoading])
