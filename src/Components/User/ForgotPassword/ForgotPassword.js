@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react'
 import { Button, FormControl, InputLabel, OutlinedInput } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
 import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from '../../../Firebase'
 
 const ForgotPassword = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
-    const [email, setEmail] = useState('')
-    const [emailValidation, setEmailValidation] = useState(false)
+    const [email, setEmail] = useState('');
+    const [emailSent, setEmailSent] = useState('');
+    const [emailValidation, setEmailValidation] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {
@@ -23,14 +25,12 @@ const ForgotPassword = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        sendPasswordResetEmail(email)
-            .then(() => {
-                console.log('Password reset email sent');
+        sendPasswordResetEmail(auth, email).then(() => {
+            setEmailSent('Email sent successfully!');
+            setTimeout(() => {
                 navigate('/login');
-            })
-            .catch((error) => {
-                setError(error.message);
-            });
+            }, 3000)
+        }).catch((error) => { setError(error.message) });
     }
 
     return (
@@ -42,7 +42,7 @@ const ForgotPassword = () => {
                         <InputLabel htmlFor="email">Email</InputLabel>
                         <OutlinedInput type='email' id="email" label="Email" onChange={handleEmail} value={email} />
                     </FormControl>
-                    <p className={styles.error_message}>{error}</p>
+                    <p className={styles.error_message}>{error || emailSent}</p>
                     <Button variant="contained" onClick={submitHandler} disabled={!emailValidation}>Send</Button>
                 </form>
                 <Link to="/login" className={styles.link}>Click here to Login</Link>

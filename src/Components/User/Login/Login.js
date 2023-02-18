@@ -26,12 +26,9 @@ const Login = (props) => {
 
     //Logic for Submit Form
     const submitHandler = () => {
-        signInWithEmailAndPassword(auth, user.email, user.password).then((userCredential) => {
-            navigate('/admin');
-            console.log(userCredential);
-        }).catch((error) => {
-            console.err(error.message);
-        })
+        signInWithEmailAndPassword(auth, user.email, user.password)
+            .then(() => { navigate('/admin') })
+            .catch((error) => { console.err(error.message) })
     }
 
     //Logic for Email and Password

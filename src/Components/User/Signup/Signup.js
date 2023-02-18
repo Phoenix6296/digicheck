@@ -23,7 +23,7 @@ const Signup = () => {
     }, [error])
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
-            user ? navigate('/admin') : console.log('No user is logged in');
+            user ? navigate('/admin') : console.log('No user is logged in', "Signup.js");
         })
     }, [navigate])
 
