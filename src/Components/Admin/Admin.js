@@ -13,11 +13,6 @@ const Admin = () => {
   const navigate = useNavigate();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      if (user && user.emailVerified) {
-        navigate('/admin/dashboard');
-        setIsLoading(false);
-        return;
-      }
       if (!user) navigate('/');
       setIsLoading(false);
     })
