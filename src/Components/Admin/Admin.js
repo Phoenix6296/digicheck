@@ -26,7 +26,6 @@ const Admin = () => {
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={navigate('/admin/dashboard')} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/feedback" element={<Feedback />} />

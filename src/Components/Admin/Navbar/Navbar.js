@@ -7,7 +7,7 @@ import { signOut } from 'firebase/auth';
 import { Avatar, IconButton, Menu, MenuItem } from '@mui/material';
 import CustomNavbar from './CustomDrawer';
 
-const Navbar = (props) => {
+const Navbar = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -15,13 +15,10 @@ const Navbar = (props) => {
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
-            if (user) {
-                setUser(user);
-                navigate('/admin/dashboard');
-            } else navigate('/');
+            user ? setUser(user) : navigate('/');
         });
         return unsubscribe;
-    }, [user, navigate]);
+    }, [navigate]);
 
     const logoutHandler = async () => {
         await signOut(auth);
