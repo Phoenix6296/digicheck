@@ -16,7 +16,7 @@ const App = () => {
     <div className={`${styles.app}`}>
       <Routes>
         <Route path="/*" element={<User />} exact />
-        <Route path="/admin/*" element={<Admin />} exact />
+        <Route path="/admin/*" element={<Admin />} />
       </Routes>
     </div>
   )

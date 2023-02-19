@@ -19,7 +19,7 @@ const Navbar = () => {
                         sx={{
                             '& .MuiAlert-icon': { color: '#6AC258', }, display: 'flex', justifyContent: 'center', alignItems: 'center',
                         }}>
-                        <Link to="/login"><span className={`${styles.alert_span}`} onClick={onSignUpHandler}>SIGNUP</span></Link> for admin access.
+                        <Link to="/signup"><span className={`${styles.alert_span}`} onClick={onSignUpHandler}>SIGNUP</span></Link> for admin access.
                     </Alert> : null
             }
             <nav className={window.innerWidth < 768 ? `${styles.center}` : null}>

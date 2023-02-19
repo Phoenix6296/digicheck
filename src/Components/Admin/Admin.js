@@ -3,7 +3,7 @@ import Navbar from "./Navbar/Navbar"
 import Profile from "./Profile/Profile";
 import Feedback from "./Feedback/Feedback";
 import { useState, useEffect } from "react"
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import { auth } from '../../Firebase'
 import { SyncLoader } from "react-spinners";
 
@@ -26,11 +26,10 @@ const Admin = () => {
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="/" element={navigate('/admin/dashboard')} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/feedback" element={<Feedback />} />
-        <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
       </Routes>
     </div>
   )
