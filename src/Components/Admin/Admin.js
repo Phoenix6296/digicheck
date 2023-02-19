@@ -26,9 +26,10 @@ const Admin = () => {
     <div>
       <Navbar />
       <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/feedback" element={<Feedback />} />
+        <Route path="/" element={<Dashboard />} exact />
+        <Route path="/dashboard" element={<Dashboard />} exact />
+        <Route path="/profile" element={<Profile />} exact />
+        <Route path="/feedback" element={<Feedback />} exact />
       </Routes>
     </div>
   )
