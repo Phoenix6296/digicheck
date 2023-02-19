@@ -32,7 +32,7 @@ const Login = (props) => {
                     setError('Please verify your email address');
                     return;
                 }
-                navigate('/admin')
+                navigate('/admin/dashboard')
             })
             .catch((error) => { console.err(error.message) })
     }

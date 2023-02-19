@@ -18,7 +18,7 @@ const Navbar = () => {
             user ? setUser(user) : navigate('/');
         });
         return unsubscribe;
-    }, [navigate]);
+    }, [user, navigate]);
 
     const logoutHandler = async () => {
         await signOut(auth);
