@@ -42,9 +42,9 @@ const Navbar = (props) => {
                 <>
                     <div className={`${styles.options} ${styles.center}`}>
                         <ul className={`${styles.list} ${styles.center}`}>
-                            <Link to="/admin/dashboard" className={`${styles.nav_link} ${props.active === 'dashboard' ? styles.active : null}`}><li>Dashboard</li></Link>
-                            <Link to="/admin/profile" className={`${styles.nav_link} ${props.active === 'profile' ? styles.active : null}`}><li>Profile</li></Link>
-                            <Link to="/admin/feedback" className={`${styles.nav_link} ${props.active === 'feedback' ? styles.active : null}`}><li>Feedback</li></Link>
+                            <Link to="/admin/dashboard" className={`${styles.nav_link}`}><li>Dashboard</li></Link>
+                            <Link to="/admin/profile" className={`${styles.nav_link}`}><li>Profile</li></Link>
+                            <Link to="/admin/feedback" className={`${styles.nav_link}`}><li>Feedback</li></Link>
                         </ul>
 
                         <div className={`${styles.user_avatar} ${styles.center}`}>
