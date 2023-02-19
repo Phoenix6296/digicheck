@@ -11,6 +11,30 @@ nav {
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
+.options {
+    gap: 2rem;
+}
+
+.user_avatar {
+    gap: 1rem;
+}
+
+.list {
+    list-style: none;
+    text-decoration: none;
+    color: #6AC258;
+    gap: 1rem;
+}
+
+.nav_link {
+    text-decoration: none;
+    color: #6AC258;
+}
+
+.nav_admin {
+    justify-content: space-between;
+}
+
 .brand {
     gap: 1rem;
 }

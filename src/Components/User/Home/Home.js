@@ -2,8 +2,17 @@ import Upload from '../Upload/Upload';
 import styles from './Home.module.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { auth } from '../../../Firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate = useNavigate();
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            navigate('/admin/dashboard');
+        }
+    });
+
     return (
         <div className={`${styles.home} ${styles.center}`}>
             <Upload />

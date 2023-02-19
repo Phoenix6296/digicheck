@@ -1,9 +1,11 @@
 import Dashboard from "./Dashboard/Dashboard"
 import Navbar from "./Navbar/Navbar"
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import { auth } from '../../Firebase'
 import { SyncLoader } from "react-spinners";
+import Profile from "./Profile/Profile"
+import Feedback from "./Feedback/Feedback"
 
 const Admin = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,8 +24,12 @@ const Admin = () => {
   return (
     <div>
       <Navbar />
-      <h1>Admin</h1>
-      <Dashboard />
+      <Routes>
+        <Route path="/" element={navigate('/admin/dashboard')} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/feedback" element={<Feedback />} />
+      </Routes>
     </div>
   )
 }
