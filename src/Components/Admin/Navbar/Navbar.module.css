@@ -24,13 +24,41 @@ nav {
     font-size: 1.5rem;
 }
 
-.signup {
-    gap: 0.5rem;
-}
-
 .link {
     text-decoration: none;
     color: #000;
+}
+
+.options {
+    gap: 2rem;
+}
+
+.user_avatar {
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.user_avatar span {
+    color: #6AC258;
+}
+
+.nav_link {
+    text-decoration: none;
+    color: #6AC258;
+    padding: 0.5rem;
+}
+
+.nav_link:hover {
+    border-bottom: 1px solid #6AC258;
+}
+
+.nav_link.active {
+    color: #000;
+}
+
+.list {
+    gap: 1rem;
+    list-style: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -45,10 +73,6 @@ nav {
 
     .brand>span {
         font-size: 1.1rem;
-    }
-
-    .signup {
-        display: none;
     }
 
     .alert_span {

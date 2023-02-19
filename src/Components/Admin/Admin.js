@@ -1,16 +1,19 @@
 import Dashboard from "./Dashboard/Dashboard"
 import Navbar from "./Navbar/Navbar"
+import Profile from "./Profile/Profile";
+import Feedback from "./Feedback/Feedback";
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom"
 import { auth } from '../../Firebase'
 import { SyncLoader } from "react-spinners";
+
 
 const Admin = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      user ? console.log(user, "Admin.js") : navigate('/');
+      if (!user) navigate('/');
       setIsLoading(false);
     })
   }, [navigate, isLoading])
@@ -22,8 +25,13 @@ const Admin = () => {
   return (
     <div>
       <Navbar />
-      <h1>Admin</h1>
-      <Dashboard />
+      <Routes>
+        <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/feedback" element={<Feedback />} />
+        <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+      </Routes>
     </div>
   )
 }

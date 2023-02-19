@@ -6,7 +6,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
 import { auth } from '../../../Firebase'
-import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
 import { SyncLoader } from 'react-spinners';
 
 const Signup = () => {
@@ -59,6 +59,7 @@ const Signup = () => {
             await sendEmailVerification(auth.currentUser);
             setIsLoading(false);
             navigate('/email_verify_sent');
+            updateProfile(auth.currentUser, { displayName: user.name })
         } catch (error) {
             setError(error.message);
         }
